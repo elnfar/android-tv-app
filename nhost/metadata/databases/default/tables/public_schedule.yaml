@@ -1,0 +1,40 @@
+table:
+  name: schedule
+  schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - title
+        - start
+        - end
+        - playlist_id
+      filter: {}
+  - role: me
+    permission:
+      columns:
+        - id
+        - title
+        - start
+        - end
+        - playlist_id
+      filter: {}
+  - role: public
+    permission:
+      columns:
+        - id
+        - title
+        - start
+        - end
+        - playlist_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - title
+        - start
+        - end
+        - playlist_id
+      filter: {}

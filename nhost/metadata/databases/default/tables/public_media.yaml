@@ -1,0 +1,48 @@
+table:
+  name: media
+  schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - createdAt
+        - updatedAt
+        - title
+        - src
+        - file_id
+        - type
+      filter: {}
+  - role: me
+    permission:
+      columns:
+        - id
+        - createdAt
+        - updatedAt
+        - title
+        - src
+        - file_id
+        - type
+      filter: {}
+  - role: public
+    permission:
+      columns:
+        - id
+        - createdAt
+        - updatedAt
+        - title
+        - src
+        - file_id
+        - type
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - createdAt
+        - updatedAt
+        - title
+        - src
+        - file_id
+        - type
+      filter: {}

@@ -1,0 +1,44 @@
+table:
+  name: playlist
+  schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - createdAt
+        - updatedAt
+        - title
+        - description
+        - media_ids
+      filter: {}
+  - role: me
+    permission:
+      columns:
+        - id
+        - createdAt
+        - updatedAt
+        - title
+        - description
+        - media_ids
+      filter: {}
+  - role: public
+    permission:
+      columns:
+        - id
+        - createdAt
+        - updatedAt
+        - title
+        - description
+        - media_ids
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - createdAt
+        - updatedAt
+        - title
+        - description
+        - media_ids
+      filter: {}

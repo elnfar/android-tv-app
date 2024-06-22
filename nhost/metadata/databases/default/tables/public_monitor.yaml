@@ -1,0 +1,40 @@
+table:
+  name: monitor
+  schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - createdAt
+        - updatedAt
+        - title
+        - schedule_id
+      filter: {}
+  - role: me
+    permission:
+      columns:
+        - id
+        - createdAt
+        - updatedAt
+        - title
+        - schedule_id
+      filter: {}
+  - role: public
+    permission:
+      columns:
+        - id
+        - createdAt
+        - updatedAt
+        - title
+        - schedule_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - createdAt
+        - updatedAt
+        - title
+        - schedule_id
+      filter: {}
