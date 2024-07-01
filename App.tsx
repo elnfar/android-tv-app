@@ -13,6 +13,21 @@ const subdomain = 'jhugfkkoqofbgmfeshkg';
 const region = 'eu-central-1';
 const graphqlUrl = `https://${subdomain}.hasura.${region}.nhost.run/v1/graphql`;
 
+const cache = new InMemoryCache({
+  typePolicies: {
+    Subscription: {
+      fields: {
+        devices: {
+          merge(existing = [], incoming) {
+            return incoming;
+          },
+        },
+      },
+    },
+  },
+});
+
+
 export default function App() {
   const wsLink = new GraphQLWsLink(
     createClient({
@@ -42,15 +57,6 @@ export default function App() {
     cache: new InMemoryCache(),
   });
 
-
-
-  console.log(splitLink);
-  console.log(wsLink)
-  
-  console.log('HTTP Link:', httpLink);
-
-
-  console.log(nhost);
   
 
   return (

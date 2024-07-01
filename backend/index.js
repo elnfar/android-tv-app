@@ -1,11 +1,6 @@
 import express from 'express';
-import fetch from 'node-fetch';
-import pkg from '@apollo/client';
-import {getDeviceController} from './controllers/getDeviceController.js';
-import { createDeviceController } from './controllers/createDeviceController.js';
-const { gql, ApolloClient, InMemoryCache, HttpLink } = pkg;
+
 import cors from 'cors'
-import { fetchMonitorAndUpdateDevice } from './controllers/fetchMonitorController.js';
 
 
 // Initialize Express app
@@ -13,19 +8,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Nhost configuration
 
+app.post('/webhook', (req, res) => {
+  // Extract data sent by Hasura from the request body
+  const eventData = req.body;
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.header("Access-Control-Allow-Headers", "x-access-token, Origin, X-Requested-With, Content-Type, Accept");
-  next();
+  console.log('Received event data from Hasura:', eventData);
+
+  res.status(200).json({ message: 'Webhook received and processed successfully' });
 });
 
-app.get('/api/getDevice/:deviceId', getDeviceController);
-app.post('/api/createDevice', createDeviceController);
-app.post('/api/fetchMonitorAndUpdateDevice', fetchMonitorAndUpdateDevice);
+
 
 
 // Start the server
